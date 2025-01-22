@@ -1,18 +1,37 @@
-import React from 'react'
-import { useRef } from 'react'
+import React, { useState } from 'react'
 
 function Start({ setUserName }) {
-	const inputRef = useRef()
+	const [name, setName] = useState('')
 
-	const handleClick = () => {
-		inputRef.current.value && setUserName(inputRef.current.value)
+	const handleSubmit = () => {
+		if (name.trim()) {
+			setUserName(name)
+		}
 	}
+
+	const handleKeyPress = (event) => {
+		if (event.key === 'Enter') {
+			handleSubmit()
+		}
+	}
+
 	return (
 		<div className="start">
-			<h1 className="start__greeting">Welcome to the Millionaires</h1>
-			<input className="start__input" type="text" placeholder="Enter your name" required ref={inputRef} />
-			<button className="start__button" onClick={handleClick}>
-				Start
+			<p className="start__greeting">Welcome to the game!</p>
+			<input
+				type="text"
+				placeholder="Enter your name"
+				className="start__input"
+				value={name}
+				onChange={(e) => setName(e.target.value)}
+				onKeyPress={handleKeyPress}
+				autoFocus
+			/>
+			<button 
+				className="start__button"
+				onClick={handleSubmit}
+			>
+				Start Game
 			</button>
 		</div>
 	)
