@@ -802,7 +802,7 @@ const data = [
 		answers: [
 			{
 				text: 'płód',
-				correct: false,
+				correct: true,
 			},
 			{
 				text: 'łożysko',
@@ -2206,6 +2206,7 @@ const data = [
 			},
 		],
 	},
+	
 ]
 
 export default data
